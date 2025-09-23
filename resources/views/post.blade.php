@@ -9,5 +9,6 @@
 <body>
     <h2>Our Post Page</h2><br>
     <a href="/" target="_blank"> HomePage</a>
+    <a href="{{ route('login') }}" target="_blank"> Login</a>
 </body>
 </html>
