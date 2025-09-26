@@ -10,12 +10,18 @@
     @php                 
     $name = "simple variable";
     $age = 33;
+    $fruits = [
+        "Banana" => "Yellow",
+        "Guava" => "Green",
+        "Mango" => "Yellow",
+        "Apple" => "red"
+];
     @endphp                                {{--start and end of php--}}
     <h2>Blade Template I</h2>
     {{-- <span>Send value is : {{ $value }}</span><br> --}}
     <ul>
         @foreach ($fruits as $color => $fruit)
-            <li>{{ $color }} => {{ $fruit }}</li>   
+            <li>{{ $color }} -- {{ $fruit }}</li>   
         @endforeach
     </ul>
     {{ "Hello world" }}<br>                {{-- print a simple statement in blade template--}}
@@ -77,7 +83,7 @@
 
     @php
     $users = ['Alice', 'Bob'];
-@endphp
+    @endphp
 
     <ul>
         @forelse ($users as $user)
@@ -86,6 +92,8 @@
             <li>No users found.</li>
         @endforelse
     </ul>
+
+    @{{ $name }}    {{-- if we use @ sign befire a blade syntax it will print the syntax as it is --}} 
 
 
     @php

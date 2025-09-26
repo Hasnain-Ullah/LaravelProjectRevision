@@ -58,9 +58,15 @@ Route::prefix('users')->group(function(){  // we can group routes using prefix m
 });
 
 Route::prefix('template')->group(function(){  // we can group routes using prefix method
-    Route::view('/one', 'first');
-    Route::view('/two', 'second');
-    Route::view('/three', 'third');
+    Route::view('/first', 'Blade_Template.templateI');
+    Route::view('/second', 'Blade_Template.templateII');
+});
+
+Route::prefix('layout')->group(function(){  // we can group routes using prefix method
+    Route::view('/master', 'layouts.masterlayout');
+    Route::view('/home', 'layouts.home');
+    Route::view('/about', 'layouts.about');
+    Route::view('/contact', 'layouts.contact');
 });
 
 Route::fallback(function(){  // we can define a fallback route using fallback method
