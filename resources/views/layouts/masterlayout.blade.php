@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'My Simple Layout')</title>   {{-- This is the area where dynamically title come --}}
                                                         {{-- the second parameter name is default value of title --}}
+        <!-- You can include your CSS files here -->
+    @stack('styles')   {{-- This is used to push styles from child views --}}
+    {{-- <link rel="stylesheet" href="{{ asset('CSS/style.css') }}"> --}}
     <style>                                                 
         /* --- Basic CSS --- */
         body {
@@ -68,12 +71,14 @@
     <!-- Body -->
     <div class="container">
         <!-- Sidebar -->
-        <aside>
-            <ul>
-                <li><a href="/layout/home">Home</a></li>
-                <li><a href="/layout/about">About</a></li>
-                <li><a href="/layout/contact">Contact</a></li>
-            </ul>
+        <aside> 
+            @section('sidebar')    {{-- Here the content comes dynamically in some pages --}}
+                <ul>
+                    <li><a href="/layout/home">Home</a></li>
+                    <li><a href="/layout/about">About</a></li>
+                    <li><a href="/layout/contact">Contact</a></li>
+                </ul>
+            @show             {{-- Here the dynamic contents shows --}}
         </aside>
 
         <!-- Dynamic Content Area -->
@@ -92,6 +97,8 @@
     <footer>
         &copy; {{ date('Y') }} My Website. All rights reserved.
     </footer>
+
+    @stack('scripts')   {{-- This is used to push scripts from child views --}}
 
 </body>
 </html>

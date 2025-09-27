@@ -60,6 +60,7 @@ Route::prefix('users')->group(function(){  // we can group routes using prefix m
 Route::prefix('template')->group(function(){  // we can group routes using prefix method
     Route::view('/first', 'Blade_Template.templateI');
     Route::view('/second', 'Blade_Template.templateII');
+    Route::view('fourth','Blade_Template.templateIV');
 });
 
 Route::prefix('layout')->group(function(){  // we can group routes using prefix method
