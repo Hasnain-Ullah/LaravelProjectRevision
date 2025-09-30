@@ -70,6 +70,46 @@ Route::prefix('layout')->group(function(){  // we can group routes using prefix 
     Route::view('/contact', 'layouts.contact');
 });
 
+ function getUser(){
+    return  [
+        1 => ["Name" => "Ali" , "Phone" => "376537" , "City" => "peshawer"],
+        2 => ["Name" => "Ali" , "Phone" => "376537" , "City" => "peshawer"],
+        3 => ["Name" => "Ali" , "Phone" => "376537" , "City" => "peshawer"],
+        4 => ["Name" => "Ali" , "Phone" => "376537" , "City" => "peshawer"],
+    ];
+};
+
+Route::get('/data', function(){           // we can pass data from route to view
+    $name = "Ali";
+    $city = "Mardan";
+    $passArray = getUser();
+    
+    // return view('passData', [             // here we are passing data to view using associative array
+    //     'name' => $name ,
+    //     'city' => $city,                  //  where key is the variable name in view and value is the data from route
+    //     'script' => "<script>alert('hello');</script>"       
+    // ]);
+    
+    // return view('passData')
+    // ->with('name' , $name)
+    // ->with('city' , $city)
+    // ->with('script' , "<script>alert('hello');</script>"); // here we are passing data to view using with method
+
+    return view('passData')
+    ->withName($name)               // here we are passing data to view using with method + key name in capital but without comma
+    ->withCity($city)
+    ->withPassArray($passArray)
+    ->withScript("<script>alert('hello');</script>");
+});
+
+Route::get('/user/{id}',function(int $id){
+    $users = getUser();
+    abort_if(!isset($users[$id]) , 404 );
+
+    $user = $users[$id];
+    return view('user',['data' => $user]);
+})->name('view.user');
+
 Route::fallback(function(){  // we can define a fallback route using fallback method
     return view('pageNotFound');
 });
