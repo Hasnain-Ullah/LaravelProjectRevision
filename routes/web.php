@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\TestingController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -73,9 +76,9 @@ Route::prefix('layout')->group(function(){  // we can group routes using prefix 
  function getUser(){
     return  [
         1 => ["Name" => "Ali" , "Phone" => "376537" , "City" => "peshawer"],
-        2 => ["Name" => "Ali" , "Phone" => "376537" , "City" => "peshawer"],
-        3 => ["Name" => "Ali" , "Phone" => "376537" , "City" => "peshawer"],
-        4 => ["Name" => "Ali" , "Phone" => "376537" , "City" => "peshawer"],
+        2 => ["Name" => "Basam" , "Phone" => "376537" , "City" => "mardan"],
+        3 => ["Name" => "Asad" , "Phone" => "376537" , "City" => "charsadda"],
+        4 => ["Name" => "KAbir" , "Phone" => "376537" , "City" => "swat"],
     ];
 };
 
@@ -109,6 +112,15 @@ Route::get('/user/{id}',function(int $id){
     $user = $users[$id];
     return view('user',['data' => $user]);
 })->name('view.user');
+
+// Work with controller
+Route::controller(UserController::class)->group(function(){
+    Route::get('/home/{name}','show')->name('show.home');
+    Route::get('/home2','showData')->name('data.home');
+});
+
+Route::get('/test',TestingController::class); // single action controller
+                                            // automatically called
 
 Route::fallback(function(){  // we can define a fallback route using fallback method
     return view('pageNotFound');

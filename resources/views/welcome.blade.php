@@ -13,7 +13,9 @@
 <body class="bg-light d-flex vh-100">
 
   <div class="container d-flex justify-content-center align-items-center">
-    <h1 class="display-4 fw-bold text-dark">Welcome To Laravel Revision</h1>
+    <h1 class="display-4 fw-bold text-dark">Welcome To Laravel Revision </h1><br>
+        {{-- <h2 class="display-4 fw-bold text-dark">:{{ $name }}</h2>     pass a value from controller to view --}}
+  
   </div>
 
   <!-- Bootstrap JS (optional) -->
