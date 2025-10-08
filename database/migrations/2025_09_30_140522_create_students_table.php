@@ -11,7 +11,7 @@ return new class extends Migration  // anonymous class that extends Migration cl
     /**
      * Run the migrations.
      */
-    public function up(): void          // method to create table and returns nothing
+    public function up(): void          // method to create table and add a column and returns nothing
     {  
         // to create table we use schema facade and create method
         // create method takes two parameters first is table name and
@@ -27,6 +27,7 @@ return new class extends Migration  // anonymous class that extends Migration cl
             $table->id();             // creates an auto-incrementing id column
             $table->string('name');   // creates a string column for name
             $table->string('email')->unique(); // creates a string column for email and makes it unique
+            $table->string('phone',11);
             $table->integer('age');   // creates an integer column for age
             $table->timestamps();
         });
