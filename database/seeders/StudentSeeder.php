@@ -70,6 +70,8 @@ class StudentSeeder extends Seeder
         //         );
         // });
 
+        // Student::factory(30)->create();  // here we can also use the factory method
+
         for($i = 0; $i <=30; $i++){
             Student::create([
                 'name' => fake()->name(),

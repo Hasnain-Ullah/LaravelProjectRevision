@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TestingController;
+use App\Http\Controllers\ValidController;
 
 
 /*
@@ -121,6 +122,10 @@ Route::controller(UserController::class)->group(function(){
 
 Route::get('/test',TestingController::class); // single action controller
                                             // automatically called
+
+// Validation route
+Route::view('/valid','valid_form');
+Route::post('/validation',[ValidController::class ,'validation_form'])->name('validate.user');
 
 Route::fallback(function(){  // we can define a fallback route using fallback method
     return view('pageNotFound');
