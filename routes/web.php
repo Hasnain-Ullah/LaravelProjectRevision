@@ -127,6 +127,11 @@ Route::get('/test',TestingController::class); // single action controller
 Route::view('/valid','valid_form');
 Route::post('/validation',[ValidController::class ,'validation_form'])->name('validate.user');
 
+Route::view('/login','login')->name('login'); // login route
+Route::post('/loginuser',[ValidController::class,'loginUser'])->name('login.user');
+
+
+// Fallback Route
 Route::fallback(function(){  // we can define a fallback route using fallback method
     return view('pageNotFound');
 });
