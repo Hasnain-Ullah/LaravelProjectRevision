@@ -41,7 +41,8 @@ class ValidController extends Controller
             'city.required' => 'City is required',
             'city.in' => 'select a valid city'
         ]);
-        return $request->all();
+        return $request->all(); //  to see all the form data
+        dd($request->all()); // to stop the code execution and see the form data
     }
 
     public function loginUser(LoginRequest $req)  // using form request for validation

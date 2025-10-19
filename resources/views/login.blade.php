@@ -20,7 +20,7 @@
         <!-- Email Field -->
         <div class="mb-3">
           <label for="email" class="form-label fw-semibold">Email address</label>
-          <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Enter your email" >
+          <input type="email" class="form-control @error('email') is-invalid @enderror"  id="email" name="email" value="{{ old('email') }}" placeholder="Enter your email" >
           <span>
             @error('email')
               <p class="text-danger small mt-1">{{ $message }}</p>
@@ -31,7 +31,7 @@
         <!-- Password Field -->
         <div class="mb-3">
           <label for="password" class="form-label fw-semibold">Password</label>
-          <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password"  placeholder="Enter your password" >
+          <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" value="{{ old('password') }}"  placeholder="Enter your password" >
             <span>
                 @error('password')
                 <p class="text-danger small mt-1">{{ $message }}</p>

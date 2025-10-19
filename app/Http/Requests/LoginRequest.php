@@ -23,7 +23,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email',
+            'email' => 'required|email|max:20',
             'password' => 'required|min:6|max:12',
             'confirm_password' => 'required|same:password',
         ];
@@ -53,14 +53,14 @@ class LoginRequest extends FormRequest
 
     protected function prepareForValidation()  // modifying data before validation
     {
-        if($this->password){
+        if($this->password){    
             $this->merge([
                 'password' => trim($this->password),  // removing spaces from password
             ]);
         }
         if($this->email){
             $this->merge([
-                'email' => strtolower(trim($this->email)), // removing spaces and converting to lowercase
+                'email' => strtoupper(trim($this->email)), // removing spaces and converting to lowercase
             ]);
         }
 
