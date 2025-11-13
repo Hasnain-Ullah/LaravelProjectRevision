@@ -54,7 +54,7 @@ class LoginRequest extends FormRequest
     protected function prepareForValidation()  // modifying data before validation
     {
         if($this->password){    
-            $this->merge([
+            $this->merge([                       // updating request data
                 'password' => trim($this->password),  // removing spaces from password
             ]);
         }

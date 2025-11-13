@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TestingController;
 use App\Http\Controllers\ValidController;
+use App\Http\Controllers\ResourceController;
 
 
 /*
@@ -130,6 +131,8 @@ Route::post('/validation',[ValidController::class ,'validation_form'])->name('va
 Route::view('/login','login')->name('login'); // login route
 Route::post('/loginuser',[ValidController::class,'loginUser'])->name('login.user');
 
+
+Route::resource('/resource', ResourceController::class); // resource controller route
 
 // Fallback Route
 Route::fallback(function(){  // we can define a fallback route using fallback method

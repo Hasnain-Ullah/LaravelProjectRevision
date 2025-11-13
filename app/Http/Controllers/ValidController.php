@@ -13,7 +13,7 @@ class ValidController extends Controller
 {
     public function validation_form(Request $request)
     { 
-        $request->validate([
+        $request->validate([        // using validate method for validation
             'name' => ['required', 'min:3', 'max:20', new Uppercase],  // using custom validation rule
             'email' => ['required',function(string $attribute , mixed $value, Closure $fail){  // using Closure for custom validation
                 if(!str_ends_with($value, '@gmail.com')){    // check if email ends with @gmail.com
