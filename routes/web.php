@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TestingController;
 use App\Http\Controllers\ValidController;
 use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\AwkumController;
 
 
 /*
@@ -21,7 +22,7 @@ use App\Http\Controllers\ResourceController;
 // Home Page Route
 Route::get('/', function () {  // Default route
     return view('welcome');    // Route is an inbuilt class and get is a static method to use
-});                            // get we use scope resolution operator (::)
+})->name('home2');                            // get we use scope resolution operator (::)
 
 Route::get('/about' , function(){  // we can also return html file
     return "<h1> About Page </h1>";
@@ -138,3 +139,7 @@ Route::resource('/resource', ResourceController::class); // resource controller 
 Route::fallback(function(){  // we can define a fallback route using fallback method
     return view('pageNotFound');
 });
+
+// Route for AwkumController
+Route::resource('/awkum', AwkumController::class);  // Resource route for AwkumController
+

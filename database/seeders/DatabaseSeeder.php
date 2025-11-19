@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([                 // this is used to register seeder file
-            StudentSeeder::class
+            StudentSeeder::class,
+            AwkumSeeder::class,
         ]);
 
 
