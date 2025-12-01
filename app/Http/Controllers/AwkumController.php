@@ -10,11 +10,12 @@ class AwkumController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index()  // Show all student records
     {
-         $students = Awkum::paginate(10);  // Retrieve all records from the 'awkum' table
-        //$students = Awkum::find([1, 2, 3],['student_name','student_email']); // Retrieve records with specific IDs and retrieve specific 
-        //$students = Awkum::count(); // Count total records in the 'awkum' table
+         $students = Awkum::paginate(10);  // Retrieve all records from the 'awkum' table with pagination (10 records per page)
+        // $students = Awkum::all(); // Retrieve all records from the 'awkum'
+        // $students = Awkum::find([1, 2, 3 , 4],['student_name','student_email']); // Retrieve records with specific IDs and retrieve specific student name and student email 
+        // $students = Awkum::count(); // Count total records in the 'awkum' table
         // $students = Awkum::min('id'); // Get the minimum value of the 'id' column and worked on integer data type
         // $students = Awkum::max('id'); // Get the maximum value of the 'id' column and worked on integer data type
         // $students = Awkum::avg('id'); // Get the average value of the 'id' column and worked on integer data type
@@ -25,16 +26,16 @@ class AwkumController extends Controller
         //     ['student_name', 'like', 'A%'],
         // ])->get();  // Retrieve records with multiple conditions
         // $students = Awkum::where('id', '>', 5)
-        //             ->orWhere('student_name', 'like', 'A%')
+        //             ->orWhere('student_name', 'like', 'A%')  // A% means name starting with A %A means name ending with A %A% means name containing A
         //             ->get(); // Retrieve records with OR condition
 
-        // $students = Awkum::whereStudent_email('ali@gmail.com')   // Dynamic where method to retrieve records with specific email
-        //             ->select('student_name', 'student_email as email')  // Select specific columns with alias(renaming a column )
-        //             ->get(); // Retrieve the records based on the above conditions
-                    //->toSql(); // Get the SQL query as a string running behind the Eloquent query
-                    //->toRawSql(); // Get the raw SQL query with values bound
+        // $students = Awkum::whereStudent_email('sana.tariq@example.com')   // Dynamic where method to retrieve records with specific email
+                    // ->select('student_name', 'student_email as email')  // Select specific columns with alias(renaming a column )
+                    //->get(); // Retrieve the records based on the above conditions
+                    // ->toSql(); // Get the SQL query as a string running behind the Eloquent query
+                    // ->toRawSql(); // Get the raw SQL query with values inserted
                     //->dd(); // Dump and die to see the query results immediately
-                    //->ddRawSql(); // Dump and die to see the raw SQL query results with values also
+                    // ->ddRawSql(); // Dump and die to see the raw SQL query results with values also
         // $students = Awkum::where('id', '>', 5)
         //             ->whereNull('student_dob') // Retrieve records where 'student_dob' is NULL
         //             ->first(); // Get the first record matching the conditions
@@ -48,19 +49,19 @@ class AwkumController extends Controller
         // $students = Awkum::orderBy('student_name', 'desc')->get(); // Retrieve records ordered by 'student_name' in descending order
         // $students = Awkum::select('student_name', 'student_email')->get(); // Retrieve specific columns
         // $students = Awkum::paginate(10); // Paginate records, 10 per page
-        // return $students;  // Return the records in JSON format
+        //  return $students;  // Return the records in JSON format
         // foreach($students as $student){
         //     echo "ID: " . $student->id . ", Name: " . $student->student_name . ", Email: " . $student->student_email . "<br>";
         // }
 
     
-        return view('Eloquent-project.home', compact('students')); // Pass the records to the view
+         return view('Eloquent-project.home', compact('students')); // Pass the records to the view
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create()  // Show the student registration form
     {
         return view('Eloquent-project.std_reg');
     }
@@ -112,7 +113,7 @@ class AwkumController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Awkum $awkum)
+    public function show(Awkum $awkum)  // Show single student details
     {
         $singleDetail = Awkum::find($awkum->id);
         return view('Eloquent-project.view_single_std', compact('singleDetail') );
@@ -121,7 +122,7 @@ class AwkumController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Awkum $awkum)
+    public function edit(Awkum $awkum) // Show the edit form for a student
     {
         $studentData = Awkum::find($awkum->id);
         return view('Eloquent-project.update_std', compact('studentData'));
@@ -130,7 +131,7 @@ class AwkumController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Awkum $awkum)
+    public function update(Request $request, Awkum $awkum)  // Update the student record
     {
         $validate_data = $request->validate([
             'student_name' => 'required|string|max:255',
@@ -172,7 +173,7 @@ class AwkumController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id)  // Delete a student record
     {
         $delete_student_reg  = Awkum::find($id);
         $delete_student_reg->delete();

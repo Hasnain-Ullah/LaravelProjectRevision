@@ -21,7 +21,7 @@ class Awkum extends Model
         'adm_campus'
     ];
 
-    protected $guarded = []; // when we create method of ORM then we use guarded property to avoid mass assignment error
+    protected $guarded = []; // when we use create method of ORM then we use guarded property to avoid mass assignment error
 
     
 
