@@ -6,6 +6,12 @@ use App\Http\Controllers\TestingController;
 use App\Http\Controllers\ValidController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\AwkumController;
+use App\Http\Controllers\AdvanceMethodORMController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TeacherController;
+
+
+
 
 
 /*
@@ -142,4 +148,16 @@ Route::fallback(function(){  // we can define a fallback route using fallback me
 
 // Route for AwkumController
 Route::resource('/awkum', AwkumController::class);  // Resource route for AwkumController
+
+// Advance ORM Methods Route
+Route::get('/advance/read', [AdvanceMethodORMController::class, 'readData'])->name('advance.orm.read');
+Route::get('/advance/create', [AdvanceMethodORMController::class, 'createData'])->name('advance.orm.create');
+Route::get('/advance/update', [AdvanceMethodORMController::class, 'updateData'])->name('advance.orm.update');
+Route::get('/advance/delete', [AdvanceMethodORMController::class , 'deleteData'])->name('advance.orm.delete');
+
+// Model conventions
+Route::resource('/conventions', StaffController::class);
+
+// One to one relationship
+Route::get('/relation/one',[TeacherController::class , 'show']);
 

@@ -9,7 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up(): void  // Create the 'awkums' table
     {
         Schema::create('awkums', function (Blueprint $table) {
             $table->id();
@@ -28,7 +28,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down(): void  // Drop the 'awkums' table
     {
         Schema::dropIfExists('awkums');
     }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Awkum;
+use App\Models\Awkum;       // Import the Awkum model
 use Illuminate\Http\Request;
 
-class AwkumController extends Controller
+class AwkumController extends Controller  
 {
     /**
      * Display a listing of the resource.

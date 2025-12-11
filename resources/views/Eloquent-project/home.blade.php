@@ -112,6 +112,7 @@
           </table>
         </div>
 
+
         <!-- 🔥 PAGINATION ADDED HERE -->
         <div class="d-flex justify-content-center my-3">
           {{ $students->links('pagination::bootstrap-5') }}
