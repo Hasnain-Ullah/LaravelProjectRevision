@@ -38,4 +38,24 @@ class TeacherController extends Controller
         // return $teachers;
 
     }
+
+    public function showDataInverse(){
+        $info = Information::with('teachers')->get();
+        return $info;
+    }
+
+    public function createData(){
+        $teachers = Teacher::create([
+            'name' => 'Zaviyar',
+            'age' => 6,
+            'gender' => 'M'
+        ]);
+        $teachers->information()->create([
+            'email' => 'zaviyar@gmail.com',
+            'contact' => '3456789012',
+            'subjects' => 'Lahore',
+            'city' => 'peshawar'
+        ]);
+        return "Data Inserted Successfully";
+    }
 }

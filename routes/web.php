@@ -9,7 +9,7 @@ use App\Http\Controllers\AwkumController;
 use App\Http\Controllers\AdvanceMethodORMController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TeacherController;
-
+use App\Http\Controllers\PostController;
 
 
 
@@ -160,4 +160,9 @@ Route::resource('/conventions', StaffController::class);
 
 // One to one relationship
 Route::get('/relation/one',[TeacherController::class , 'show']);
+Route::get('/relation/inverse',[TeacherController::class , 'showDataInverse']);
+Route::get('/relation/create', [TeacherController::class , 'createData']);
 
+// One to many relationship
+Route::get('/relation/posts', [PostController::class , 'index']);
+Route::get('/relation/comments' , [PostController::class , 'showComments']);
