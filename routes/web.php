@@ -10,6 +10,8 @@ use App\Http\Controllers\AdvanceMethodORMController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\EmployeeController;
+
 
 
 
@@ -166,3 +168,8 @@ Route::get('/relation/create', [TeacherController::class , 'createData']);
 // One to many relationship
 Route::get('/relation/posts', [PostController::class , 'index']);
 Route::get('/relation/comments' , [PostController::class , 'showComments']);
+Route::get('/relation/insert' , [PostController::class , 'insertRecords']);
+
+// Many to many relationship
+Route::get('/relation/many' , [EmployeeController::class,'showRoles']);
+Route::get('/relation/roles' , [EmployeeController::class,'showUsers']);

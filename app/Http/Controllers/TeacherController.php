@@ -19,7 +19,7 @@ class TeacherController extends Controller
         // Using Where Clause
         // $teachers = Teacher::with('information')
         //                 ->where('name' , 'Amir')
-        //                 ->get();  // work well form teacher table but give an error for information table
+        //                 ->get();  // work well for teacher table but give an error for information table
         // return $teachers;
 
         // withWhereHas Method

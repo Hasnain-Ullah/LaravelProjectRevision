@@ -62,4 +62,27 @@ class PostController extends Controller
         // $comment = Comment::whereBelongsTo( $post )->get();
         // return $comment;
     }
+
+    public function insertRecords(){
+        // first method of inserting a new records
+        // $records = new Comment([
+        //     'commenter_name' => 'Hasnain',
+        //     'comment_text' => 'this is the comment written by me',
+        // ]);
+        // $post = Post::find(3);
+        // $post->comments()->save($records);
+
+        // 2nd methods of inserting many records
+        $post = Post::find(4);
+        $post->comments()->createMany([
+            [
+                'commenter_name' => 'Basam',
+                'comment_text' => 'this is the comment written by me',
+            ],
+            [
+                'commenter_name' => 'Azhan',
+               'comment_text' => 'this is the comment written by me',
+            ]
+            ]);
+    }
 }
